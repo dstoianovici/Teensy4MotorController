@@ -1,0 +1,46 @@
+This is a teensy 4.0 Encoder Breakout Board.
+
+
+
+Pin outs are as Follows.
+
+
+Board Pin ----> Teensy Pin
+--------------------------
+LVL_SHIFT_EN -> Pin 20
+
+ENC1_A    ----> Pin 0
+ENC1_B    ----> Pin 1
+
+ENC2_A    ----> Pin 2
+ENC2_B    ----> Pin 3
+
+ENC3_A    ----> Pin 4
+ENC3_B    ----> Pin 5
+
+ENC4_A    ----> Pin 6
+ENC4_B    ----> Pin 7
+
+MOT1_PWM1 ----> Pin 8
+MOT1_PWM2 ----> Pin 9
+MOT1_EN   ----> Pin 16
+
+MOT2_PWM1 ----> Pin 10
+MOT2_PWM2 ----> Pin 11
+MOT2_EN   ----> Pin 17
+
+MOT3_PWM1 ----> Pin 12
+MOT3_PWM2 ----> Pin 13
+MOT3_EN   ----> Pin 18
+
+MOT4_PWM1 ----> Pin 14
+MOT4_PWM2 ----> Pin 15
+MOT4_EN   ----> Pin 19
+
+
+For use with Cytron FD04A-R2 motor driver
+
+Board Pin ----> Cytron Pin
+--------------------------
+PWM ----> enable
+EN  ----> direction
