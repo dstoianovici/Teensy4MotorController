@@ -1,9 +1,9 @@
 #include <Arduino.h>
-//#include <QuadEncoder.h>
 #include <Encoder.h>
 #include <CytronMotorDriver.h>
 #include <Serial_Parser.h>
-//#include <std.h>
+#include <ros.h>
+
 
 
 #define ENCODER_OPTIMIZE_INTERRUPTS
@@ -122,6 +122,9 @@ void loop() {
   if(Serial.available() > 0){
     parser.GetParams(setpoints, pars_params);
     int pid_flag = 0;
+    for(int i = 0; i < 3; i++){
+      settled_flag[i] = 0;
+    }
 
     while(pid_flag == 0){
       if(settled_flag[0] == 1 && settled_flag[1] == 1 && settled_flag[2] == 1){
@@ -148,14 +151,12 @@ void loop() {
 }
 
 float computePID(int setpoint, int state, int channel,float _deadband){ //Written with global variable, make better by passing in pointers to abstract class
+  settled_flag[channel] = 0;
+
   currentTime[channel] = millis();
   elapsedTime[channel] = (currentTime[channel]-previousTime[channel])/1000;
 
   error[channel] = float(setpoint - state);
-
-  if(abs(cumError[channel]) >= (4*ROTATION)){ //Anti Windup
-    cumError[channel] = 4*ROTATION;
-  }
 
   if(abs(error[channel]) <= _deadband){
     error[channel] = 0;
@@ -164,8 +165,8 @@ float computePID(int setpoint, int state, int channel,float _deadband){ //Writte
     return out;
   }
 
-  else{
-    settled_flag[channel] = 0;
+  if(abs(cumError[channel]) >= (4*ROTATION)){ //Anti Windup
+    cumError[channel] = 4*ROTATION;
   }
 
   cumError[channel] += error[channel]*elapsedTime[channel];
