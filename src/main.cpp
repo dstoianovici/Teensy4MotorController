@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <Encoder.h>
 #include <CytronMotorDriver.h>
-#include <Serial_Parser.h>
 #include <ros.h>
 
 
@@ -54,18 +53,13 @@
 #define MOT4_PWM2 15
 #define MOT4_EN   19
 
-//Serial Parser Object Construct
-Serial_Parser parser(DELIM,RANGE_MAX,RANGE_MIN);
-
 Encoder enc1(ENC1_A,ENC1_B);
 Encoder enc2(ENC2_A,ENC2_B);
 Encoder enc3(ENC3_A,ENC3_B);
-//Encoder enc3(ENC4_A,ENC4_B); //Usually Encoder 4
 
 CytronMD motor1(PWM_DIR, MOT1_PWM1, MOT1_EN);
 CytronMD motor2(PWM_DIR, MOT2_PWM1, MOT2_EN);
 CytronMD motor3(PWM_DIR, MOT3_PWM1, MOT3_EN);
-//CytronMD motor4(PWM_DIR, MOT4_PWM1, MOT4_EN);
 
 //PID Function Prototype
 float computePID(int setpoint, int state, int channel,float _deadband);
