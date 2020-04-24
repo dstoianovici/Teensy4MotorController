@@ -5,7 +5,6 @@
 #include <ros.h>
 
 
-
 #define ENCODER_OPTIMIZE_INTERRUPTS
 
 //Serial Comms
@@ -58,8 +57,6 @@
 //Serial Parser Object Construct
 Serial_Parser parser(DELIM,RANGE_MAX,RANGE_MIN);
 
-
-
 Encoder enc1(ENC1_A,ENC1_B);
 Encoder enc2(ENC2_A,ENC2_B);
 Encoder enc3(ENC3_A,ENC3_B);
@@ -78,16 +75,9 @@ void limit_speed_percentage(float max_speed, float percent, int* output);
 int setpoints[NUM_PARAMS] = {MIDPOINT,MIDPOINT,MIDPOINT}, setpoints_old[NUM_PARAMS] = {MIDPOINT,MIDPOINT,MIDPOINT};
 
 //PID Vars
-// float kP[3] = {1.8,1.8,1.8}; //0.125
-// float kI[3] = {0.1,0.1,0.1}; //0.001
-// float kD[3] = {0.7,0.7,0.7};
-
 float kP[3] = {1,1,1}; //0.125
 float kI[3] = {0.0,0.0,0.0}; //0.001
 float kD[3] = {0.1,0.1,0.1};
-
-// float kD[4] = {0,0,0,0};
-// float kI[4] = {0.0,0.0,0.0,0.0};
 
 float deadband = 70.0;
 
