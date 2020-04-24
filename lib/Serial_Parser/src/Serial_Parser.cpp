@@ -6,7 +6,6 @@ Serial_Parser::Serial_Parser(char delimiter, int range_M, int range_m){
   _delimiter = delimiter;
   _range_M = range_M;
   _range_m = range_m;
-  Serial.println("parser created");
 }
 
 //////////Methods//////////////////
@@ -15,11 +14,9 @@ void Serial_Parser::GetParams(int* nums, int* output){
   String sub_string = "/n";
   int index = 0; //Index of the comma
   int i = 0; // itterator for nums array
-  int endstring_flag = 1; //Flag for end of string object processing
-  int range_flag = 0;
-  //int* output; //Slot 0 for number of args parsed, 1 for if in range
+  uint8_t endstring_flag = 1; //Flag for end of string object processing
+  uint8_t range_flag = 0;
 
-  if (Serial.available() > 0){
     py_data = Serial.readString();
 
     while(endstring_flag == 1){
@@ -41,18 +38,8 @@ void Serial_Parser::GetParams(int* nums, int* output){
         endstring_flag = 1;
       }
     }
-  }
 
-  else{
-    i = 0;
-    range_flag = 0;
-    //output[0] = 0;
-    //output[1] = 0;
-    //return output; //return 0 if
-  }
 
   output[0] = i;
   output[1] = range_flag;
-
-  //return output;
   }
