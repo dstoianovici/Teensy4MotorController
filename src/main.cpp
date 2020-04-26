@@ -113,6 +113,8 @@ void setup() {
 
 void loop() {
 
+      nh.spinOnce();
+
       // Compute PID and send to motors.
       int out1 = computePID(setpoints[0], enc1.read(), 0, deadband);
       int out2 = computePID(setpoints[1], enc2.read(), 1, deadband);
@@ -131,7 +133,7 @@ void loop() {
       pos_fb.data[2] = error[2];
 
       pos_pub.publish( &pos_fb );
-      nh.spinOnce();
+      //nh.spinOnce();
 
       delay(10);
 }
