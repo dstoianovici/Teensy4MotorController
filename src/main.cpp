@@ -180,6 +180,7 @@ void limit_speed_percentage(float max_speed, float percent, int* output){
 
 
 void set_goal( const std_msgs::Int32MultiArray& goal_msg){
+
   setpoints[0] = goal_msg.data[0];
   setpoints[1] = goal_msg.data[1];
   setpoints[2] = goal_msg.data[2];
