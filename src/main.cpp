@@ -69,7 +69,7 @@ float kP[3] = {1,1,1}; //0.125
 float kI[3] = {0.0,0.0,0.0}; //0.001
 float kD[3] = {0.1,0.1,0.1};
 
-float deadband = 70.0;
+float deadband = 50.0;
 
 float volatile currentTime[NUM_MOTORS], previousTime[NUM_MOTORS], elapsedTime[NUM_MOTORS];
 float volatile error[NUM_MOTORS]={0,0,0}, cumError[NUM_MOTORS]={0,0,0}, rateError[NUM_MOTORS]={0,0,0}, lastError[NUM_MOTORS]={0,0,0};
