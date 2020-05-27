@@ -19,7 +19,7 @@
 #define PID_FREQ 60
 #define PWM_FREQ 20000
 #define MAX_SPEED 255
-#define SPEED_PRCNT 0.75
+#define SPEED_PRCNT 0.8
 
 
 #define RANGE_MAX 1023 //Max val of pot
@@ -65,11 +65,11 @@ void limit_speed_percentage(float max_speed, float percent, int* output);
 int setpoints[NUM_PARAMS] = {MIDPOINT,MIDPOINT,MIDPOINT}, setpoints_old[NUM_PARAMS] = {MIDPOINT,MIDPOINT,MIDPOINT};
 
 //PID Vars
-float kP[3] = {1,1,1}; //0.125
+float kP[3] = {2.25,2.25,2.25}; //0.125
 float kI[3] = {0.0,0.0,0.0}; //0.001
 float kD[3] = {0.1,0.1,0.1};
 
-float deadband = 50.0;
+float deadband = 75.0;
 
 float volatile currentTime[NUM_MOTORS], previousTime[NUM_MOTORS], elapsedTime[NUM_MOTORS];
 float volatile error[NUM_MOTORS]={0,0,0}, cumError[NUM_MOTORS]={0,0,0}, rateError[NUM_MOTORS]={0,0,0}, lastError[NUM_MOTORS]={0,0,0};
